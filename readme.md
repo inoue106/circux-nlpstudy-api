@@ -25,7 +25,8 @@ circux-nlpstudy-api
 ## Usage
 
 ## Install
-`docker-compose.yml`のあるディレクトリで、下記を実行。初回は叩いてからAPIにアクセスできるようになるまでに1時間弱かかる。
+* modelsの下に「HR領域の単語ベクトル」より取得したbinを配置する。
+* `docker-compose.yml`のあるディレクトリで、下記を実行する。初回は叩いてからAPIにアクセスできるようになるまでに1時間弱かかる。
 ```
 docker-compose up --build
 ```
