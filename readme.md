@@ -14,6 +14,25 @@ circux-nlpstudy-api
 * Webフレームワーク
     * [Flask](https://flask.palletsprojects.com/)
 
+### ディレクトリ構成
+* root
+    * docker-compose.yml - 統合環境構築用定義
+    * docker
+        * python
+            * Dockerfile - Python環境を構築するDockerfile
+    * models - gensimの学習済モデルを配置するディレクトリ
+    * src
+        * static - jsやcss
+        * templates - HTMLテンプレート
+        * server.py - docker-composeで起動されるスクリプト
+
+### 簡単な設計思想
+* 初回ビルドでgensimとginza、flaskの最低限の環境を構築する
+* server.py にルーティングとサービス起動が記述されているので、これを読めば全部わかる
+    * 最初のrootブロックが初期化、全体で共有するオブジェクトもここで定義
+    * @app.routeブロックがルーティングの定義
+        * 基本的にはPOSTで受けJSONで返す
+    * 最後の if __name__ == "__main__": ブロックがサーバの定義
 
 ## Demo
 
