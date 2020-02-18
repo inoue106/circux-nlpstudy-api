@@ -1,0 +1,11 @@
+version: '3'
+services:
+  python:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    volumes:
+      - .:/usr/local/app:cached
+    ports:
+    - "8888:8888"
+  

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<p>&nbsp;</p>
+<form class="">
+<div class="container">
+	<div class="col-md-12">
+		<textarea class="form-control js-word" rows="3"></textarea>
+		<button type="button" class="btn btn-primary js-recognize">解析</button>
+	</div>
+</div>
+</form>
+
+<p>&nbsp;</p>
+<form class="">
+	<div class="container">
+		<div class="col-md-12">
+			<textarea class="form-control js-word1" rows="2"></textarea>
+			<textarea class="form-control js-word2" rows="2"></textarea>
+			<button type="button" class="btn btn-primary js-similarity">類似度</button>
+			<button type="button" class="btn btn-primary js-most-similar">similar</button>
+		</div>
+	</div>
+</form>
+	
+<div class="container">
+	<div class="col-md-12">
+		<div class="js-result">結果</div>
+	</div>
+</div>
+{% endblock %}
