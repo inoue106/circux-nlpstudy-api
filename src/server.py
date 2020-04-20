@@ -119,7 +119,8 @@ def wnjpn(word=None):
             target_word_id = row3[0]
             cur3_1 = conn.execute("select lemma from word where wordid=%s" % target_word_id)
             for row3_1 in cur3_1:
-                results.append(row3_1[0])
+                if not (row3_1[0] in results):
+                    results.append(row3_1[0])
                 print("類義語%s : %s" % (sub_no, row3_1[0]))
                 sub_no += 1
         print("\n")
@@ -127,6 +128,7 @@ def wnjpn(word=None):
 
     return jsonify({
             'status': 'OK',
+            'word': word,
             'result': results
         })
 
