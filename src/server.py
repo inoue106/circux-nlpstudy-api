@@ -75,9 +75,10 @@ def top5():
             'similarity': s
         })
 
-@app.route('/wnjpn/<word>', methods=["GET"])
-def wnjpn(word):
+@app.route('/wnjpn', methods=["GET"])
+def wnjpn():
     # 問い合わせしたい単語がWordnetに存在するか確認する
+    word = request.args.get('w')
     cur = conn.execute("select wordid from word where lemma='%s'" % word)
     word_id = 99999999  #temp 
     for row in cur:
