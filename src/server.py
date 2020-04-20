@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from gensim.models import KeyedVectors
 import spacy
+import sqlite3
+conn = sqlite3.connect("wnjpn.db")
 
 app = Flask(__name__)
 MODEL_FILENAME = "models/stanby-jobs-200d-word2vector.bin"
@@ -71,6 +73,15 @@ def top5():
     return jsonify({
             'status': 'OK',
             'similarity': s
+        })
+
+@app.route('/wnjpn', methods=["GET"])
+def wnjpn():
+    cur = conn.execute("select name from sqlite_master where type='table'")
+    for row in cur:
+        print(row)
+    return jsonify({
+            'status': 'OK'
         })
 
 if __name__ == "__main__":
