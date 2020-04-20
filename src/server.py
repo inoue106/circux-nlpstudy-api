@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 from gensim.models import KeyedVectors
 import spacy
 import sqlite3
-conn = sqlite3.connect("wnjpn.db")
 
 app = Flask(__name__)
 MODEL_FILENAME = "models/stanby-jobs-200d-word2vector.bin"
@@ -75,10 +74,12 @@ def top5():
             'similarity': s
         })
 
-@app.route('/wnjpn', methods=["GET"])
-def wnjpn():
+@app.route('/wnjpn/<word>', methods=["GET"])
+def wnjpn(word=None):
+    conn = sqlite3.connect("wnjpn.db")
+
     # 問い合わせしたい単語がWordnetに存在するか確認する
-    word = request.args.get('w')
+    #word = request.args.get('w')
     cur = conn.execute("select wordid from word where lemma='%s'" % word)
     word_id = 99999999  #temp 
     for row in cur:
