@@ -59,10 +59,14 @@ def similarity():
             'similarity': s
         })
 
-@app.route('/most-similar', methods=["POST"])
+@app.route('/most-similar', methods=["POST","GET"])
 def top5():
     word = ''
     num = 5
+    if ('w' in request.args.get):
+        word = request.args.get["w"]
+    if ('n' in request.args.get):
+        num = request.args.get["n"]
     if ('w' in request.form):
         word = request.form["w"]
     if ('n' in request.form):
