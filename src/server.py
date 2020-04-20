@@ -63,10 +63,8 @@ def similarity():
 def top5():
     word = ''
     num = 5
-    if ('w' in request.args.get):
-        word = request.args.get["w"]
-    if ('n' in request.args.get):
-        num = request.args.get["n"]
+    word = request.args.get["w"]
+    num = request.args.get["n"]
     if ('w' in request.form):
         word = request.form["w"]
     if ('n' in request.form):
